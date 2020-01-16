@@ -24,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent user=new Intent(MainActivity.this, user_login.class);
                 startActivity(user);
-                finish();
-                return;
             }
         });
         bt_driver.setOnClickListener(new View.OnClickListener() {
@@ -33,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent driver=new Intent(MainActivity.this, driver_login.class);
                 startActivity(driver);
-                finish();
-                return;
             }
         });
 
