@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "881347754840",
+    "firebase_url": "https://ambulance-a8d38.firebaseio.com",
+    "project_id": "ambulance-a8d38",
+    "storage_bucket": "ambulance-a8d38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881347754840:android:d99b8ff88ef11f100fc32d",
+        "android_client_info": {
+          "package_name": "com.hackaday.ambulance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881347754840-8m4ihh9pqd7kose75581lnhe95fsv6d4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hackaday.ambulance",
+            "certificate_hash": "083585ad47976c25368cc8a132075aa6ddc981a5"
+          }
+        },
+        {
+          "client_id": "881347754840-dc1rco6gun3fpl4f7g5679t5j1hsm08i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsNu5Q060rfAlvKegv5FocVdgbTMlF8aQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881347754840-dc1rco6gun3fpl4f7g5679t5j1hsm08i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
