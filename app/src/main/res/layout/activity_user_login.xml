@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/login_Password"
         android:layout_width="318dp"
         android:layout_height="41dp"
         android:layout_marginTop="15dp"
@@ -64,7 +64,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/login_Password" />
 
     <Button
         android:id="@+id/bt_signup"

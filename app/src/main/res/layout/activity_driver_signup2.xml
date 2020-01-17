@@ -7,7 +7,7 @@
     tools:context=".driver_signup2">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/license_num"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
-        android:id="@+id/bt_user_submit"
+        android:id="@+id/bt_signup2"
         android:layout_width="244dp"
         android:layout_height="48dp"
         android:layout_marginTop="54dp"
@@ -46,7 +46,7 @@
         android:text="Plesase enter your ambulance details below:"
         android:textColor="#666666"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/license_num"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -75,7 +75,7 @@
         app:srcCompat="@mipmap/icon_ambu_foreground" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/vehicle_num"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
@@ -86,10 +86,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/license_num" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/vehicle_owner"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
@@ -100,7 +100,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/vehicle_num" />
 
     <Spinner
         android:id="@+id/ambu_Type"
@@ -113,7 +113,7 @@
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/vehicle_owner" />
 
     <TextView
         android:id="@+id/textView8"
@@ -126,7 +126,7 @@
         app:layout_constraintEnd_toStartOf="@+id/ambu_Type"
         app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/vehicle_owner" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

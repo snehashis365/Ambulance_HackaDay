@@ -7,7 +7,7 @@
     tools:context=".driver_signup">
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/signup_Password"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
@@ -18,10 +18,10 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_phone" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/signup_Name"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/signup_email"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
@@ -46,10 +46,10 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_Name" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/signup_phone"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
@@ -60,10 +60,10 @@
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_email" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/signup_rePassword"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
@@ -74,7 +74,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_Password" />
 
     <Button
         android:id="@+id/bt_user_submit"
@@ -88,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_rePassword" />
 
     <TextView
         android:id="@+id/textView11"
@@ -102,7 +102,7 @@
         android:text="Plesase enter your details below:"
         android:textColor="#666666"
         android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/signup_Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
