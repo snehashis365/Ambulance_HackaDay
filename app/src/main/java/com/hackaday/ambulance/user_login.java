@@ -30,7 +30,9 @@ public class user_login extends AppCompatActivity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(user_login.this, "User Login: Coming Soon!!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(user_login.this, "User Login: Coming Soon!!", Toast.LENGTH_SHORT).show();
+                Intent user_map=new Intent(user_login.this, User_Map.class);
+                startActivity(user_map);
             }
         });
     }
