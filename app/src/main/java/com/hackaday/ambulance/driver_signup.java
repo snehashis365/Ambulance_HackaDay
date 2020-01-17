@@ -16,7 +16,7 @@ public class driver_signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_signup);
 
-        bt_submit=findViewById(R.id.bt_driver_submit);
+        bt_submit=findViewById(R.id.bt_user_submit);
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

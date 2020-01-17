@@ -21,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <Button
-        android:id="@+id/bt_driver_submit"
+        android:id="@+id/bt_user_submit"
         android:layout_width="244dp"
         android:layout_height="48dp"
         android:layout_marginTop="54dp"
