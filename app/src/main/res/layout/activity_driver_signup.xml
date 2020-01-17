@@ -77,12 +77,12 @@
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     <Button
-        android:id="@+id/bt_user_signup"
+        android:id="@+id/bt_driver_submit"
         android:layout_width="244dp"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/custom_button_gradient1"
-        android:text="Sign Up"
+        android:text="Submit"
         android:textAllCaps="false"
         android:textColor="#FCFCFC"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,5 +129,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/icon_ambu_foreground" />
+
+    <ScrollView
+        android:layout_width="358dp"
+        android:layout_height="30dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="438dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

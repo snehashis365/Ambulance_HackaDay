@@ -29,7 +29,9 @@ public class driver_login extends AppCompatActivity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(driver_login.this, "Driver Login: Coming Soon!!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(driver_login.this, "Driver Login: Coming Soon!!", Toast.LENGTH_SHORT).show();
+                Intent driver_map=new Intent(driver_login.this,Driver_Map.class);
+                startActivity(driver_map);
             }
         });
     }

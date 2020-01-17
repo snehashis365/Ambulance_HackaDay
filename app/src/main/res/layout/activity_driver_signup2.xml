@@ -4,21 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user_signup">
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/text_box_border1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+    tools:context=".driver_signup2">
 
     <EditText
         android:id="@+id/editText"
@@ -28,59 +14,17 @@
         android:background="@drawable/text_box_border1"
         android:ems="10"
         android:gravity="center"
-        android:hint="Full Name"
+        android:hint="Enter License Number"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/text_box_border1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="E-mail"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/text_box_border1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Mobile Number"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/text_box_border1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Re-enter Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
     <Button
         android:id="@+id/bt_driver_submit"
         android:layout_width="244dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="54dp"
         android:background="@drawable/custom_button_gradient1"
         android:text="Sign Up"
         android:textAllCaps="false"
@@ -88,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/ambu_Type" />
 
     <TextView
         android:id="@+id/textView11"
@@ -99,7 +43,7 @@
         android:gravity="center"
         android:scaleX="1.25"
         android:scaleY="1.25"
-        android:text="Plesase enter your details below:"
+        android:text="Plesase enter your ambulance details below:"
         android:textColor="#666666"
         android:textSize="10sp"
         app:layout_constraintBottom_toTopOf="@+id/editText"
@@ -117,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/icon_user_foreground" />
+        app:srcCompat="@mipmap/icon_driver_foreground" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -129,6 +73,60 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/icon_ambu_foreground" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/text_box_border1"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Vehicle Number"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="320dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/text_box_border1"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Vehicle Owner Name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+
+    <Spinner
+        android:id="@+id/ambu_Type"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/text_box_border1"
+        android:entries="@array/ambu_Type_spinner"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="106dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center|center_vertical"
+        android:text="Select\nAmbulance Type"
+        app:layout_constraintEnd_toStartOf="@+id/ambu_Type"
+        app:layout_constraintHorizontal_bias="0.423"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

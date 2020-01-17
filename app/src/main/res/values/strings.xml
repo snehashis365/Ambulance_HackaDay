@@ -2,4 +2,13 @@
     <string name="app_name">Ambulance Booking</string>
     <string name="hint_email">Email</string>
     <string name="hint_pass">Password</string>
+    <string-array name="ambu_Type_spinner">
+        <item>Basic</item>
+        <item>Cardiac Ambulance</item>
+        <item>Patient Transport Vehicle</item>
+        <item>Air Ambulance</item>
+        <item>Neo Natal</item>
+        <item>Mortuary Ambulance</item>
+    </string-array>
+    <string name="title_activity_driver__map">Driver Map</string>
 </resources>
