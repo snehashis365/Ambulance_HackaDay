@@ -56,11 +56,12 @@ public class Driver_Map extends FragmentActivity implements OnMapReadyCallback {
 
         @Override
         public void onLocationResult(LocationResult locationResult) {
+
             for(Location location : locationResult.getLocations()){
                 mLastLoacation = location;
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
             }
         }
     };
@@ -77,6 +78,7 @@ public class Driver_Map extends FragmentActivity implements OnMapReadyCallback {
             if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
 
                 mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
+                mMap.setMyLocationEnabled(true);
 
             }else{
                 checkLocationPermission();
