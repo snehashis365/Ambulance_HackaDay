@@ -1,7 +1,6 @@
 package com.hackaday.ambulance;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -11,45 +10,62 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationProvider;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
+import android.view.HapticFeedbackConstants;
+import android.view.View;
+import android.widget.ImageButton;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Driver_Map extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private  FusedLocationProviderClient mFusedLocationClient;
     //GoogleApiClient mGoogleApiClient;
+    ImageButton btn_Logout;
     Location mLastLoacation;
     LocationRequest mLocationRequest;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver__map);
+        setContentView(R.layout.activity_driver_map);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        btn_Logout=findViewById(R.id.btn_Logout);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.driver_map);
         mapFragment.getMapAsync(this);
+
+        btn_Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FirebaseAuth.getInstance().signOut();
+                //Intent logout=new Intent(User_Map.this, MainActivity.class);
+                //startActivity(logout);
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                finish();
+                return;
+            }
+        });
+
     }
 
     LocationCallback mLocationCallback = new LocationCallback(){

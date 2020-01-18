@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,6 +66,7 @@ public class user_login extends AppCompatActivity {
         bt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 Intent user_signup=new Intent(user_login.this, com.hackaday.ambulance.user_signup.class);
                 startActivity(user_signup);
             }
@@ -75,6 +77,8 @@ public class user_login extends AppCompatActivity {
                 /*Toast.makeText(user_login.this, "User Login: Don't Judge Work in progress", Toast.LENGTH_SHORT).show();
                 Intent user_map=new Intent(user_login.this, User_Map.class);
                 startActivity(user_map);*/
+
+                view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS);
 
                 final String UserName=userName.getText().toString().trim();
                 final String Password=pass.getText().toString();
@@ -93,7 +97,8 @@ public class user_login extends AppCompatActivity {
                 else{
                     Toast.makeText(user_login.this, "Please enter credentials", Toast.LENGTH_SHORT).show();
                     startMap();
-                    Toast.makeText(user_login.this, "Assuming tester Map opened for test", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(user_login.this, "\t\t\t\t\tAssuming you are Tester\n" +
+                            "User Map opened for testing purpose", Toast.LENGTH_LONG).show();
                 }
 
             }

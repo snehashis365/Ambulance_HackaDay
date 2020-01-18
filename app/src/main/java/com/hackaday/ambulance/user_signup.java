@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -69,6 +70,8 @@ public class user_signup extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(user_signup.this, "User Signup: Coming Soon!", Toast.LENGTH_SHORT).show();
+
+                view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
 
                 final String Name=name.getText().toString();
                 final String Email=email.getText().toString();

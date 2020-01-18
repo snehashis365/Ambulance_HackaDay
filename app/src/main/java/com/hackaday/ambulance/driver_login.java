@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +14,14 @@ public class driver_login extends AppCompatActivity {
 
     Button bt_signup,bt_login;
     TextView forgot;
+
+
+    private void startMap(){
+
+        Intent driver_map=new Intent(driver_login.this,Driver_Map.class);
+        startActivity(driver_map);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +42,20 @@ public class driver_login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(driver_login.this, "Driver Login: Don't Judge Work in progress", Toast.LENGTH_SHORT).show();
-                Intent driver_map=new Intent(driver_login.this,Driver_Map.class);
-                startActivity(driver_map);
+                //Starting Map Activity
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                startMap();
+
+                Toast.makeText(driver_login.this, "\t\t\t\t\tAssuming you are Tester\n" +
+                        "User Map opened for testing purpose", Toast.LENGTH_LONG).show();
+
             }
         });
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS);
                 Toast.makeText(driver_login.this, "Driver Password Reset: Coming Soon!!", Toast.LENGTH_SHORT).show();
             }
         });

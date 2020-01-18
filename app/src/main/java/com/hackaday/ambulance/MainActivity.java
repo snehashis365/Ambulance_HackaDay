@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         bt_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 Intent user=new Intent(MainActivity.this, user_login.class);
                 startActivity(user);
             }
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         bt_driver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 Intent driver=new Intent(MainActivity.this, driver_login.class);
                 startActivity(driver);
             }

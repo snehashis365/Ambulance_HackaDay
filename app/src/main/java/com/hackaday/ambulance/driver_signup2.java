@@ -3,6 +3,7 @@ package com.hackaday.ambulance;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -21,6 +22,7 @@ public class driver_signup2 extends AppCompatActivity {
         driver_signup2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 Toast.makeText(driver_signup2.this, "Driver Signup: Coming Soon!!", Toast.LENGTH_SHORT).show();
             }
         });
