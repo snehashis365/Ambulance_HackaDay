@@ -15,8 +15,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -74,27 +78,51 @@ public class user_signup extends AppCompatActivity {
                 if(Name.length()>=3){
 
                     if(Email.length()>0 && Phone.length()>=10){
+
                         if(Password.length()>0 && Password.equals(RePassword)){
-                            mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(user_signup.this, new OnCompleteListener<AuthResult>() {
+
+                            Query emailQuery=FirebaseDatabase.getInstance().getReference().child("Members").child("Users").orderByChild("Email").equalTo(Email);
+                            emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                    if(task.isSuccessful()){
-                                        String user_id= mAuth.getCurrentUser().getUid();
-                                        DatabaseReference current_user_db= FirebaseDatabase.getInstance().getReference().child("Members").child("Users").child(user_id);
-                                        Map newUser = new HashMap();
-                                        newUser.put("Name", Name);
-                                        newUser.put("Phone", Phone);
-
-                                        current_user_db.setValue(newUser);
-
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.getChildrenCount()>0){
+                                        Toast.makeText(user_signup.this, "Email already exists!!", Toast.LENGTH_LONG).show();
                                     }
-                                    else{
-                                        Toast.makeText(user_signup.this, "User Signup: Failed!! PLease Try Again", Toast.LENGTH_SHORT).show();
+
+                                    else {
+
+                                        mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(user_signup.this, new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                                if(task.isSuccessful()){
+                                                    String user_id= mAuth.getCurrentUser().getUid();
+                                                    DatabaseReference current_user_db= FirebaseDatabase.getInstance().getReference().child("Members").child("Users").child(user_id);
+                                                    Map newUser = new HashMap();
+                                                    newUser.put("Name", Name);
+                                                    newUser.put("Phone", Phone);
+                                                    newUser.put("Email", Email);
+
+                                                    current_user_db.setValue(newUser);
+
+                                                }
+                                                else{
+                                                    Toast.makeText(user_signup.this, "User Signup: Failed!! PLease Try Again", Toast.LENGTH_SHORT).show();
+                                                }
+
+                                            }
+                                        });
+
                                     }
 
                                 }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                }
                             });
+
                         }
                         else if (Password.length()<8){
                             Toast.makeText(user_signup.this, "Password Must be atleast 8 characters long", Toast.LENGTH_SHORT).show();
