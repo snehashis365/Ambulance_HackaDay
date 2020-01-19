@@ -48,7 +48,7 @@ import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.mancj.materialsearchbar.MaterialSearchBar;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
