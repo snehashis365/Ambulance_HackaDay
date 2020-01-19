@@ -2,6 +2,8 @@
     <string name="app_name">Ambulance Booking</string>
     <string name="hint_email">Email</string>
     <string name="hint_pass">Password</string>
+
+    <string name="google_maps_key">AIzaSyD_51pdZf8pAXCGT7Ti8fhWczuhbSFLFM0</string>
     <string-array name="ambu_Type_spinner">
         <item>Select a category</item>
         <item>Basic</item>
