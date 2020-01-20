@@ -9,6 +9,7 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class user_login extends AppCompatActivity {
     Button bt_signup,bt_login;
     EditText userName, pass;
     TextView forgot;
+    ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
@@ -42,6 +44,7 @@ public class user_login extends AppCompatActivity {
 
         userName=findViewById(R.id.userName);
         pass=findViewById(R.id.login_Password);
+        progressBar=findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -49,6 +52,7 @@ public class user_login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(user_login.this, "          Login Success with Firebase\nUser Login: Don't Judge Work in progress", Toast.LENGTH_SHORT).show();
                     startMap();
                     /*
@@ -79,6 +83,7 @@ public class user_login extends AppCompatActivity {
                 startActivity(user_map);*/
 
                 view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS);
+                progressBar.setVisibility(View.VISIBLE);
 
                 final String UserName=userName.getText().toString().trim();
                 final String Password=pass.getText().toString();
@@ -87,6 +92,7 @@ public class user_login extends AppCompatActivity {
                     mAuth.signInWithEmailAndPassword(UserName, Password).addOnCompleteListener(user_login.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressBar.setVisibility(View.GONE);
                             if(!task.isSuccessful()){
                                 Toast.makeText(user_login.this, "Login Failed! Please Try again", Toast.LENGTH_SHORT).show();
                             }
@@ -95,6 +101,7 @@ public class user_login extends AppCompatActivity {
 
                 }
                 else{
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(user_login.this, "Please enter credentials", Toast.LENGTH_SHORT).show();
                     startMap();
                     Toast.makeText(user_login.this, "\t\t\t\t\tAssuming you are Tester\n" +

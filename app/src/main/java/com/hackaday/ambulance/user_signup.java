@@ -9,6 +9,7 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +31,7 @@ public class user_signup extends AppCompatActivity {
 
     EditText name, email, phone, pass, rePass;
     Button user_signup;
+    ProgressBar progressBar;
 
 
     private FirebaseAuth mAuth;
@@ -52,6 +54,7 @@ public class user_signup extends AppCompatActivity {
         phone=findViewById(R.id.signup_phone);
         pass=findViewById(R.id.signup_Password);
         rePass=findViewById(R.id.signup_rePassword);
+        progressBar=findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -72,6 +75,7 @@ public class user_signup extends AppCompatActivity {
                 //Toast.makeText(user_signup.this, "User Signup: Coming Soon!", Toast.LENGTH_SHORT).show();
 
                 view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                progressBar.setVisibility(View.VISIBLE);
 
                 final String Name=name.getText().toString();
                 final String Email=email.getText().toString();
@@ -89,6 +93,7 @@ public class user_signup extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     if (dataSnapshot.getChildrenCount()>0){
+                                        progressBar.setVisibility(View.GONE);
                                         Toast.makeText(user_signup.this, "Email already exists!!", Toast.LENGTH_LONG).show();
                                     }
 
@@ -98,6 +103,7 @@ public class user_signup extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<AuthResult> task) {
 
+                                                progressBar.setVisibility(View.GONE);
                                                 if(task.isSuccessful()){
                                                     String user_id= mAuth.getCurrentUser().getUid();
                                                     DatabaseReference current_user_db= FirebaseDatabase.getInstance().getReference().child("Members").child("Users").child(user_id);
@@ -128,18 +134,22 @@ public class user_signup extends AppCompatActivity {
 
                         }
                         else if (Password.length()<8){
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(user_signup.this, "Password Must be atleast 8 characters long", Toast.LENGTH_SHORT).show();
                         }
                         else{
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(user_signup.this, "Password don't match please Re-enter", Toast.LENGTH_SHORT).show();
                         }
                     }
                     else{
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(user_signup.this, "Please enter valid Email and Phone nmuber", Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 else {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(user_signup.this, "Enter Valid Name 1st", Toast.LENGTH_SHORT).show();
                 }
 
