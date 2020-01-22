@@ -116,7 +116,7 @@ public class user_signup extends AppCompatActivity {
 
                                                 }
                                                 else{
-                                                    Toast.makeText(user_signup.this, "User Signup: Failed!! PLease Try Again", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(user_signup.this, "User SignUp: Failed!! PLease Try Again", Toast.LENGTH_SHORT).show();
                                                 }
 
                                             }

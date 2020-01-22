@@ -82,7 +82,7 @@ public class user_login extends AppCompatActivity {
                 Intent user_map=new Intent(user_login.this, User_Map.class);
                 startActivity(user_map);*/
 
-                view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_PRESS);
+                view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 progressBar.setVisibility(View.VISIBLE);
 
                 final String UserName=userName.getText().toString().trim();
@@ -104,7 +104,7 @@ public class user_login extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(user_login.this, "Please enter credentials", Toast.LENGTH_SHORT).show();
                     startMap();
-                    Toast.makeText(user_login.this, "\t\t\t\t\tAssuming you are Tester\n" +
+                    Toast.makeText(user_login.this, "Assuming you are Tester\n" +
                             "User Map opened for testing purpose", Toast.LENGTH_LONG).show();
                 }
 

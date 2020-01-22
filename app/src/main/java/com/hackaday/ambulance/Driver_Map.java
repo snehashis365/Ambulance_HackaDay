@@ -16,6 +16,7 @@ import android.os.Looper;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -40,6 +41,17 @@ public class Driver_Map extends FragmentActivity implements OnMapReadyCallback {
 
 
 
+    private void logOut(){
+
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(Driver_Map.this, "Session Ended", Toast.LENGTH_SHORT).show();
+        //Intent logout=new Intent(User_Map.this, MainActivity.class);
+        //startActivity(logout);
+        finish();
+        return;
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +69,7 @@ public class Driver_Map extends FragmentActivity implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
 
-                FirebaseAuth.getInstance().signOut();
-                //Intent logout=new Intent(User_Map.this, MainActivity.class);
-                //startActivity(logout);
+                logOut();
                 view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 finish();
                 return;
@@ -163,5 +173,11 @@ public class Driver_Map extends FragmentActivity implements OnMapReadyCallback {
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        logOut();
     }
 }
