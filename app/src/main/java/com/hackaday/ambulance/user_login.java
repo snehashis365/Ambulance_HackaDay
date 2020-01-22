@@ -55,10 +55,6 @@ public class user_login extends AppCompatActivity {
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(user_login.this, "          Login Success with Firebase\nUser Login: Don't Judge Work in progress", Toast.LENGTH_SHORT).show();
                     startMap();
-                    /*
-                    Intent user_map=new Intent(user_login.this, User_Map.class);
-                    startActivity(user_map);
-                    */
                 }
 
             }

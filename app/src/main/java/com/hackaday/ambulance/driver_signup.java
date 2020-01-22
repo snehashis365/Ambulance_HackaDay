@@ -9,6 +9,7 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,8 @@ public class driver_signup extends AppCompatActivity {
 
     Button bt_submit;
     EditText name, email, phone, pass, rePass;
+    ProgressBar progressBar;
+
 
 
 
@@ -35,12 +38,16 @@ public class driver_signup extends AppCompatActivity {
         phone=findViewById(R.id.signup_phone);
         pass=findViewById(R.id.signup_Password);
         rePass=findViewById(R.id.signup_rePassword);
+        progressBar=findViewById(R.id.progressBar);
+
         bt_submit=findViewById(R.id.bt_user_submit);
         bt_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                progressBar.setVisibility(View.VISIBLE);
+
 
                 final String Name = name.getText().toString();
                 final String Email = email.getText().toString();
@@ -57,8 +64,8 @@ public class driver_signup extends AppCompatActivity {
                             emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    progressBar.setVisibility(View.GONE);
                                     if (dataSnapshot.getChildrenCount() > 0) {
-                                        //progressBar.setVisibility(View.GONE);
                                         Toast.makeText(driver_signup.this, "Email already exists!!", Toast.LENGTH_LONG).show();
                                     } else {
 
@@ -77,19 +84,19 @@ public class driver_signup extends AppCompatActivity {
                                 }
                             });
                         } else if (Password.length() < 8) {
-                            //progressBar.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(driver_signup.this, "Password Must be atleast 8 characters long", Toast.LENGTH_SHORT).show();
                         } else {
-                            //progressBar.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(driver_signup.this, "Password don't match please Re-enter", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        //progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(driver_signup.this, "Please enter valid Email and Phone nmuber", Toast.LENGTH_SHORT).show();
                     }
 
                 } else {
-                    //progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(driver_signup.this, "Enter Valid Name 1st", Toast.LENGTH_SHORT).show();
                 }
 

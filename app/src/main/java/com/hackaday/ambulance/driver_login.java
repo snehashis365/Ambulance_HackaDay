@@ -9,6 +9,7 @@ import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,8 @@ public class driver_login extends AppCompatActivity {
     Button bt_signup,bt_login;
     TextView forgot;
     EditText userName, pass;
+    ProgressBar progressBar;
+
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
@@ -42,6 +45,8 @@ public class driver_login extends AppCompatActivity {
 
         userName=findViewById(R.id.userName);
         pass=findViewById(R.id.login_Password);
+        progressBar=findViewById(R.id.progressBar);
+
 
         mAuth = FirebaseAuth.getInstance();
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -49,20 +54,15 @@ public class driver_login extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if(user!=null){
-                    //progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(driver_login.this, "          Login Success with Firebase\nUser Login: Don't Judge Work in progress", Toast.LENGTH_SHORT).show();
                     startMap();
-                    /*
-                    Intent user_map=new Intent(user_login.this, User_Map.class);
-                    startActivity(user_map);
-                    */
                 }
 
             }
         };
 
         bt_signup=findViewById(R.id.bt_signup);
-        bt_login=findViewById(R.id.bt_login);
         forgot=findViewById(R.id.text_Forgot);
         bt_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +72,15 @@ public class driver_login extends AppCompatActivity {
                 startActivity(driver_signup);
             }
         });
+        bt_login=findViewById(R.id.bt_login);
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //Starting Map Activity
                 view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                progressBar.setVisibility(View.VISIBLE);
+
                 final String UserName=userName.getText().toString().trim();
                 final String Password=pass.getText().toString();
 
@@ -85,7 +88,7 @@ public class driver_login extends AppCompatActivity {
                     mAuth.signInWithEmailAndPassword(UserName, Password).addOnCompleteListener(driver_login.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            //progressBar.setVisibility(View.GONE);
+                            progressBar.setVisibility(View.GONE);
                             if(!task.isSuccessful()){
                                 Toast.makeText(driver_login.this, "Login Failed! Please Try again", Toast.LENGTH_SHORT).show();
                             }
@@ -94,7 +97,7 @@ public class driver_login extends AppCompatActivity {
 
                 }
                 else{
-                    //progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(driver_login.this, "Please enter credentials", Toast.LENGTH_SHORT).show();
                     startMap();
                     Toast.makeText(driver_login.this, "Assuming you are Tester\n" +

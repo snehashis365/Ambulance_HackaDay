@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -30,6 +31,8 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
     Spinner ambu_type;
     Button driver_signup2;
     EditText license_num,vehicle_num,vehicle_owner;
+    ProgressBar progressBar;
+
 
     String spinner_textAmbuType;
     int spinner_index=0;
@@ -60,6 +63,7 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
         license_num=findViewById(R.id.license_num);
         vehicle_num=findViewById(R.id.vehicle_num);
         vehicle_owner=findViewById(R.id.vehicle_owner);
+        progressBar=findViewById(R.id.progressBar);
 
 
         //Spinner setup
@@ -91,7 +95,9 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(View view) {
                 view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                progressBar.setVisibility(View.VISIBLE);
                 if (spinner_index == 0) {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(driver_signup2.this, "Select Ambulance category first", Toast.LENGTH_SHORT).show();
                     view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
 
@@ -100,10 +106,12 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
                     final String License=license_num.getText().toString();
                     final String Vehicle=vehicle_num.getText().toString();
                     final String Vehicle_Owner=vehicle_owner.getText().toString();
+
                     //Ambulance type string already updated from onSelected method
                     mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(driver_signup2.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            progressBar.setVisibility(View.GONE);
                             if(task.isSuccessful()){
                                 String user_id=mAuth.getCurrentUser().getUid();
                                 DatabaseReference current_driver_ref = FirebaseDatabase.getInstance().getReference().child("Members").child("Drivers").child(user_id);
@@ -127,8 +135,6 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
                             }
                         }
                     });
-                    //Toast.makeText(driver_signup2.this, "Driver Signup: Coming Soon!!", Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
