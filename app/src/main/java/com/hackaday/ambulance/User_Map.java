@@ -204,7 +204,7 @@ public class User_Map extends FragmentActivity implements OnMapReadyCallback {
 				moveMyLocationButton(0,0,18,100);
 			}
 		}
-
+        //Pin position fetcher
 		mMap.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
 			@Override
 			public void onCameraMove() {

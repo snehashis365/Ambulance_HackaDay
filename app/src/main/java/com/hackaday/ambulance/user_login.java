@@ -79,6 +79,7 @@ public class user_login extends AppCompatActivity {
                 startActivity(user_map);*/
 
                 view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                mAuth.addAuthStateListener(firebaseAuthListener);
                 progressBar.setVisibility(View.VISIBLE);
 
                 final String UserName=userName.getText().toString().trim();
@@ -119,7 +120,7 @@ public class user_login extends AppCompatActivity {
         super.onStart();
 
         //Starting Listener
-        mAuth.addAuthStateListener(firebaseAuthListener);
+        //mAuth.addAuthStateListener(firebaseAuthListener);
 
     }
 

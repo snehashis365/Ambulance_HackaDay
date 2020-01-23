@@ -79,6 +79,7 @@ public class driver_login extends AppCompatActivity {
 
                 //Starting Map Activity
                 view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                mAuth.addAuthStateListener(firebaseAuthListener);
                 progressBar.setVisibility(View.VISIBLE);
 
                 final String UserName=userName.getText().toString().trim();
@@ -119,7 +120,7 @@ public class driver_login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(firebaseAuthListener);
+        //mAuth.addAuthStateListener(firebaseAuthListener);
     }
 
     @Override
