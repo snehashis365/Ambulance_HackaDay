@@ -100,9 +100,13 @@ public class driver_login extends AppCompatActivity {
                 else{
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(driver_login.this, "Please enter credentials", Toast.LENGTH_SHORT).show();
+
+                    /* Remove Comment lines to enable user testing must login with proper credentials
                     startMap();
                     Toast.makeText(driver_login.this, "Assuming you are Tester\n" +
                         "Driver Map opened for testing purpose", Toast.LENGTH_LONG).show();
+                    */
+
                 }
 
             }

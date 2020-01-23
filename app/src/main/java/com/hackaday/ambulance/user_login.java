@@ -100,9 +100,11 @@ public class user_login extends AppCompatActivity {
                 else{
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(user_login.this, "Please enter credentials", Toast.LENGTH_SHORT).show();
+                    /* Remove comment lines to enable user testing
                     startMap();
                     Toast.makeText(user_login.this, "Assuming you are Tester\n" +
                             "User Map opened for testing purpose", Toast.LENGTH_LONG).show();
+                    */
                 }
 
             }
