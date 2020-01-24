@@ -138,11 +138,13 @@ public class Driver_Map extends FragmentActivity implements OnMapReadyCallback {
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
 
+                Log.d("Working: ","isWorking.isChecked="+isWorking.isChecked());
                 if(FirebaseAuth.getInstance().getCurrentUser()!=null)
                 {
 
                     if (isWorking.isChecked())
                     {
+
                         DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference("driversAvailable");
 
                         //GeoFire stuff

@@ -3,23 +3,31 @@ package com.hackaday.ambulance;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -33,8 +41,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -50,6 +60,7 @@ import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.skyfishjy.library.RippleBackground;
 
 
 import java.util.ArrayList;
@@ -61,15 +72,37 @@ public class User_Map extends FragmentActivity implements OnMapReadyCallback {
 	private GoogleMap mMap;
 	private  FusedLocationProviderClient mFusedLocationClient;
 	ImageButton btn_Logout;
+	Button select;
 	ImageView user_pin;
 	Location mLastLoacation;
 	Location pinLocation;
 	LocationRequest mLocationRequest;
-	LatLng pinPosition;
+	LatLng pinPosition,pickupPosition,dropoffPosition;
 	View mapView;
 	PlacesClient placesClient;
 	private List<AutocompletePrediction> predictionList;
 	private String destination;
+	boolean pickupMarked=false;
+	boolean dropoffMarked=false;
+
+	RippleBackground rippleBackground;
+
+
+
+	public static Bitmap getBitmapFromVectorDrawable(Context context, int drawableId) {
+		Drawable drawable =  AppCompatResources.getDrawable(context, drawableId);
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+			drawable = (DrawableCompat.wrap(drawable)).mutate();
+		}
+
+		Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+				drawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(bitmap);
+		drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+		drawable.draw(canvas);
+
+		return bitmap;
+	}
 
 
 	private void logOut(){
@@ -90,7 +123,9 @@ public class User_Map extends FragmentActivity implements OnMapReadyCallback {
 
 		mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 		btn_Logout=findViewById(R.id.btn_Logout);
+		select = findViewById(R.id.select);
 		user_pin=findViewById(R.id.user_pin);
+		rippleBackground=findViewById(R.id.ripple);
 
 		// Obtain the SupportMapFragment and get notified when the map is ready to be used.
 		SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -185,6 +220,11 @@ public class User_Map extends FragmentActivity implements OnMapReadyCallback {
 		mLocationRequest.setFastestInterval(3000);
 		mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
+		mMap.getUiSettings().setCompassEnabled(false);
+		mMap.getUiSettings().setZoomControlsEnabled(false);
+		mMap.getUiSettings().setMapToolbarEnabled(false);
+		mMap.getUiSettings().setTiltGesturesEnabled(false);
+
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
 			if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
 
@@ -201,7 +241,7 @@ public class User_Map extends FragmentActivity implements OnMapReadyCallback {
 				moveToUserLocation();
 				mMap.setMyLocationEnabled(true);
 				//Send my location button to bottom
-				moveMyLocationButton(0,0,18,100);
+				moveMyLocationButton(0,0,18,150);
 			}
 		}
         //Pin position fetcher
@@ -220,6 +260,45 @@ public class User_Map extends FragmentActivity implements OnMapReadyCallback {
 					//Logs for testing
 					Log.d("Moved Pin to:","Latitude:"+pinLocation.getLatitude()+", Longitude:"+pinLocation.getLongitude());
 				}
+
+			}
+		});
+
+		select.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				if(!pickupMarked){
+
+					mMap.addMarker(new MarkerOptions().position(pinPosition).icon(BitmapDescriptorFactory
+							.fromBitmap(getBitmapFromVectorDrawable(getApplicationContext(), R.drawable.user_pin_pickup))).title("Pickup Here")).showInfoWindow();
+					select.setText("Set as Drop off Location");
+					pickupMarked = true;
+					pickupPosition = pinPosition;
+
+				}
+				else if (!dropoffMarked){
+
+					mMap.addMarker(new MarkerOptions().position(pinPosition).icon(BitmapDescriptorFactory
+							.fromBitmap(getBitmapFromVectorDrawable(getApplicationContext(), R.drawable.user_pin_dropoff))).title("Drop here")).showInfoWindow();
+					select.setText("Call Ambulance");
+					dropoffMarked = true;
+					dropoffPosition = pinPosition;
+				}
+				else {
+
+						rippleBackground.startRippleAnimation();
+						new Handler().postDelayed(new Runnable() {
+							@Override
+							public void run() {
+								rippleBackground.stopRippleAnimation();
+								Toast.makeText(User_Map.this, "Animation is for testing only for now", Toast.LENGTH_SHORT).show();
+
+							}
+						}, 10000);
+
+				}
+
+
 
 			}
 		});
