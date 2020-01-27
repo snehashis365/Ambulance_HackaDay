@@ -1,141 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
     tools:context=".driver_signup2">
 
-    <EditText
-        android:id="@+id/license_num"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/text_box_border1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Enter License Number"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <Button
-        android:id="@+id/bt_signup2"
-        android:layout_width="244dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="54dp"
-        android:background="@drawable/custom_button_gradient1"
-        android:text="Sign Up"
-        android:textAllCaps="false"
-        android:textColor="#FCFCFC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ambu_Type" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="217dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:scaleX="1.25"
-        android:scaleY="1.25"
-        android:text="Plesase enter your ambulance details below:"
-        android:textColor="#666666"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/license_num"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <EditText
+            android:id="@+id/license_num"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/text_box_border1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Enter License Number"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/circle_background"
-        android:scaleX="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/icon_driver_foreground" />
+        <Button
+            android:id="@+id/bt_signup2"
+            android:layout_width="244dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/custom_button_gradient1"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textColor="#FCFCFC"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ambu_Type" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
+            android:text="Plesase enter your ambulance details below:"
+            android:textColor="#666666"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@+id/license_num"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/icon_ambu_foreground" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/circle_background"
+            android:scaleX="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/icon_driver_foreground" />
 
-    <EditText
-        android:id="@+id/vehicle_num"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/text_box_border1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Vehicle Number"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/license_num" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/vehicle_owner"
-        android:layout_width="320dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/text_box_border1"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Vehicle Owner Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_num" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@mipmap/icon_ambu_foreground" />
 
-    <Spinner
-        android:id="@+id/ambu_Type"
-        android:layout_width="180dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/text_box_border1"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_owner" />
+        <EditText
+            android:id="@+id/vehicle_num"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/text_box_border1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Vehicle Number"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/license_num" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="106dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="18dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center|center_vertical"
-        android:text="Select\nAmbulance Type"
-        app:layout_constraintEnd_toStartOf="@+id/ambu_Type"
-        app:layout_constraintHorizontal_bias="0.423"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicle_owner" />
+        <EditText
+            android:id="@+id/vehicle_owner"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/text_box_border1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Vehicle Owner Name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vehicle_num" />
+
+        <EditText
+            android:id="@+id/vehicle_insurance"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/text_box_border1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Vehicle Insurance number"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vehicle_owner" />
+
+        <EditText
+            android:id="@+id/from"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/text_box_border1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Valid From (DD/MM/YYYY)"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vehicle_insurance" />
+
+        <EditText
+            android:id="@+id/upto"
+            android:layout_width="320dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/text_box_border1"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Valid Upto (DD/MM/YYYY)"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/from" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Spinner
+            android:id="@+id/ambu_Type"
+            android:layout_width="180dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/text_box_border1"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toBottomOf="@+id/upto" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="106dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center|center_vertical"
+            android:text="Select\nAmbulance Type"
+            app:layout_constraintEnd_toStartOf="@+id/ambu_Type"
+            app:layout_constraintHorizontal_bias="0.423"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upto" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

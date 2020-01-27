@@ -30,7 +30,7 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
 
     Spinner ambu_type;
     Button driver_signup2;
-    EditText license_num,vehicle_num,vehicle_owner;
+    EditText license_num,vehicle_num,vehicle_owner,vehicle_insurance,vFrom,vUpto;
     ProgressBar progressBar;
 
 
@@ -63,6 +63,9 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
         license_num=findViewById(R.id.license_num);
         vehicle_num=findViewById(R.id.vehicle_num);
         vehicle_owner=findViewById(R.id.vehicle_owner);
+        vehicle_insurance=findViewById(R.id.vehicle_insurance);
+        vFrom=findViewById(R.id.from);
+        vUpto=findViewById(R.id.upto);
         progressBar=findViewById(R.id.progressBar);
 
 
@@ -106,6 +109,9 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
                     final String License=license_num.getText().toString();
                     final String Vehicle=vehicle_num.getText().toString();
                     final String Vehicle_Owner=vehicle_owner.getText().toString();
+                    final String Vehicle_Insurance=vehicle_insurance.getText().toString();
+                    final String Valid_From=vFrom.getText().toString();
+                    final String Valid_Upto=vUpto.getText().toString();
 
                     //Ambulance type string already updated from onSelected method
                     mAuth.createUserWithEmailAndPassword(Email,Password).addOnCompleteListener(driver_signup2.this, new OnCompleteListener<AuthResult>() {
@@ -125,6 +131,9 @@ public class driver_signup2 extends AppCompatActivity implements AdapterView.OnI
                                 newDriver.put("Vehicle_Number",Vehicle);
                                 newDriver.put("Vehicle_Owner",Vehicle_Owner);
                                 newDriver.put("Type",spinner_textAmbuType);
+                                newDriver.put("Vehicle_Insurance",Vehicle_Insurance);
+                                newDriver.put("Valid From",Valid_From);
+                                newDriver.put("Valid upto",Valid_Upto);
 
                                 //Uploading Details
                                 current_driver_ref.setValue(newDriver);
