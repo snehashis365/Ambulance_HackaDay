@@ -134,7 +134,7 @@ public class User_Map extends FragmentActivity implements OnMapReadyCallback {
 		mapFragment.getMapAsync(this);
 
 		//Initializing API key to for Places SDK
-		Places.initialize(User_Map.this,"AIzaSyD_51pdZf8pAXCGT7Ti8fhWczuhbSFLFM0");
+		Places.initialize(User_Map.this,"PLACE YOUR KEY HERE");
 
 		placesClient = Places.createClient(this);
 		//final AutocompleteSessionToken token = AutocompleteSessionToken.newInstance();
